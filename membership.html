@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会员中心 · 颜汐 YANXI AI</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27%23B8355F%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2713%27 fill=%27%232c2350%27/%3E%3Ccircle cx=%2746%27 cy=%2720%27 r=%274%27 fill=%27%23A9862C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .mcard{border-radius:14px;padding:2rem 2.2rem;color:#fff;position:relative;overflow:hidden;background:linear-gradient(135deg,#2b3a5c,#141E36 60%,#1c1030);box-shadow:0 24px 60px -24px rgba(20,30,54,.5)}
+  .mcard::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% -10%,rgba(255,255,255,.14),transparent 55%)}
+  .mcard .top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1}
+  .mcard .tierbadge{display:inline-flex;align-items:center;gap:.4em;padding:.35em .9em;border-radius:100px;font-size:.76rem;letter-spacing:.05em;background:rgba(255,255,255,.14);backdrop-filter:blur(4px)}
+  .mcard .chip{width:38px;height:28px;border-radius:5px;background:linear-gradient(135deg,#d9c690,#a9862c)}
+  .mcard h2{color:#fff;font-size:1.5rem;margin-top:1.6rem;position:relative;z-index:1}
+  .mcard .mid{font-size:.8rem;color:#AEB6CC;margin-top:.3rem;letter-spacing:.05em;position:relative;z-index:1}
+  .mcard .points-row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:1.8rem;position:relative;z-index:1}
+  .mcard .points{font-family:var(--serif);font-weight:900;font-size:2.2rem}
+  .mcard .points small{font-family:var(--sans);font-weight:400;font-size:.7rem;color:#AEB6CC;display:block;letter-spacing:.05em}
+  .progress-wrap{margin-top:1.5rem;position:relative;z-index:1}
+  .progress-wrap .lbl{display:flex;justify-content:space-between;font-size:.76rem;color:#AEB6CC;margin-bottom:.5rem}
+  .progress-track{background:rgba(255,255,255,.16);border-radius:100px;height:8px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold),#e3c467)}
+
+  .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  @media(max-width:900px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.tier-grid{grid-template-columns:1fr}}
+  .tier-card{border:1px solid var(--line);border-radius:8px;padding:1.4rem 1.2rem;background:var(--surface);position:relative}
+  .tier-card.current{border-color:var(--magenta);box-shadow:0 0 0 1px var(--magenta)}
+  .tier-card .swatch{width:28px;height:28px;border-radius:50%;margin-bottom:.9rem}
+  .tier-card h4{font-family:var(--serif);font-size:1.05rem}
+  .tier-card .min{font-size:.76rem;color:var(--muted);margin-top:.2rem}
+  .tier-card ul{margin-top:1rem;padding-left:0;list-style:none;font-size:.8rem;color:var(--ink-soft)}
+  .tier-card li{padding:.3rem 0;display:flex;gap:.5em}
+  .tier-card li::before{content:"✓";color:var(--teal);font-weight:700}
+  .current-flag{position:absolute;top:-11px;right:14px;background:var(--magenta);color:#fff;font-size:.68rem;padding:.25em .7em;border-radius:100px}
+
+  .redeem-item{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+  .redeem-item:last-child{border-bottom:none}
+  .redeem-item .info h5{font-family:var(--serif);font-size:.95rem}
+  .redeem-item .info span{font-size:.78rem;color:var(--gold)}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">平台首页</a><span>/</span><span>会员中心</span></div>
+    <span class="kana">MEMBERSHIP CENTER</span>
+    <h1>会员中心</h1>
+    <p class="lead">查看您的会员等级、积分与成长历程,解锁更多专属权益。以下为演示账户数据。</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="grid" style="grid-template-columns:1.1fr .9fr;gap:2rem" id="memberTop">
+      <div class="mcard reveal" id="memberCard"></div>
+      <div class="card reveal" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 style="margin-bottom:.6rem">邀请好友,共享权益</h3>
+        <p class="muted" style="font-size:.86rem">好友使用您的邀请码完成首次消费,双方各得 200 积分。</p>
+        <div class="flex gap-1 center-y mt-2">
+          <input type="text" id="inviteCode" readonly value="YANXI-CX0812" style="max-width:200px">
+          <button class="btn btn-outline btn-sm" id="copyInvite">复制邀请码</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section id="tiers" style="background:linear-gradient(180deg,#F5F6F8,#EEF0F4)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Tier Benefits · 会员等级</span>
+      <h2>四级会员体系</h2>
+      <p class="lead">累计消费越多,等级越高,专属权益也更丰富。</p>
+    </div>
+    <div class="tier-grid reveal" id="tierGrid"></div>
+  </div>
+</section>
+
+<!-- REDEEM + HISTORY -->
+<section id="detail">
+  <div class="wrap">
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:2rem">
+
+      <div class="reveal">
+        <div class="shead" style="margin-bottom:1.4rem">
+          <span class="eyebrow">Points Redemption · 积分兑换</span>
+          <h2 style="font-size:1.6rem">积分商城</h2>
+        </div>
+        <div class="card" id="redeemList"></div>
+      </div>
+
+      <div class="reveal">
+        <div class="shead" style="margin-bottom:1.4rem">
+          <span class="eyebrow">Points History · 积分明细</span>
+          <h2 style="font-size:1.6rem">最近动态</h2>
+        </div>
+        <div class="card">
+          <div class="vtl" id="pointsHistory"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT HISTORY -->
+<section id="apphistory" style="background:linear-gradient(180deg,#EEF0F4,#F5F6F8)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Visit History · 消费与到店记录</span>
+      <h2>历史项目记录</h2>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>时间</th><th>项目</th><th>顾问</th><th>状态</th></tr></thead>
+        <tbody id="apptTable"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/mock-data.js"></script>
+<script src="assets/js/membership.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>颜汐 YANXI AI · AI 医美平台演示</title>
+<meta name="description" content="颜汐 YANXI AI —— AI 医美平台产品演示原型:预约系统、会员管理、AI 皮肤分析、AI 客服、臻选商城、数据综合分析">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27%23B8355F%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2713%27 fill=%27%232c2350%27/%3E%3Ccircle cx=%2746%27 cy=%2720%27 r=%274%27 fill=%27%23A9862C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kana">AI BEAUTY PLATFORM</span>
+      <h1>让每一次变美<br>都有<span class="accent">AI</span>相伴</h1>
+      <p class="lead">颜汐是一套面向医美机构的 AI 智能平台演示:从 AI 皮肤分析、智能预约到会员运营与经营数据分析,把前台体验与后台决策连接成一个完整闭环。本页面为<b>可交互的产品演示原型</b>,数据与 AI 结果均为模拟。</p>
+      <div class="hero-cta">
+        <a href="skin-analysis.html" class="btn btn-primary">免费体验 AI 皮肤分析 →</a>
+        <a href="booking.html" class="btn btn-ghost">在线预约</a>
+      </div>
+    </div>
+    <div class="cell-stage">
+      <svg class="cell-svg breathe" viewBox="0 0 400 400" role="img" aria-label="AI 皮肤扫描示意">
+        <defs>
+          <radialGradient id="scanGrad" cx="42%" cy="38%">
+            <stop offset="0%" stop-color="#fbe9f0"/>
+            <stop offset="55%" stop-color="#e59ebb"/>
+            <stop offset="100%" stop-color="#b8355f"/>
+          </radialGradient>
+          <clipPath id="faceClip"><circle cx="200" cy="200" r="108"/></clipPath>
+        </defs>
+        <circle cx="200" cy="200" r="150" fill="url(#scanGrad)" opacity=".18"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#b8355f" stroke-width="1.5" opacity=".35" stroke-dasharray="2 6"/>
+        <g class="orbit">
+          <circle cx="200" cy="55" r="5" fill="#A9862C"/>
+          <circle cx="330" cy="150" r="4" fill="#b8355f"/>
+          <circle cx="300" cy="300" r="4.5" fill="#1B857C"/>
+          <circle cx="90"  cy="300" r="4" fill="#b8355f"/>
+          <circle cx="65"  cy="140" r="4.5" fill="#243F6E"/>
+        </g>
+        <circle cx="200" cy="200" r="108" fill="url(#scanGrad)" opacity=".9"/>
+        <!-- abstract face silhouette -->
+        <g clip-path="url(#faceClip)" opacity=".85">
+          <ellipse cx="200" cy="210" rx="52" ry="66" fill="#2c2350" opacity=".18"/>
+          <circle cx="180" cy="190" r="4" fill="#2c2350" opacity=".5"/>
+          <circle cx="222" cy="190" r="4" fill="#2c2350" opacity=".5"/>
+          <path d="M186 228q14 10 28 0" stroke="#2c2350" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+        </g>
+        <!-- scan grid lines -->
+        <g clip-path="url(#faceClip)" opacity=".55">
+          <line x1="92" y1="200" x2="308" y2="200" stroke="#A9862C" stroke-width="1"/>
+          <line x1="200" y1="92" x2="200" y2="308" stroke="#A9862C" stroke-width="1"/>
+          <rect x="92" y="128" width="216" class="scanline" height="2" fill="#A9862C"/>
+        </g>
+        <circle cx="200" cy="200" r="108" fill="none" stroke="#fff" stroke-width="2" opacity=".5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <div class="stat reveal"><div class="n">6<em>大</em></div><div class="l">核心模块,覆盖获客、服务与经营全链路</div></div>
+    <div class="stat reveal"><div class="n">15<em>秒</em></div><div class="l">AI 皮肤分析平均生成一份多维度报告</div></div>
+    <div class="stat reveal"><div class="n">24<em>h</em></div><div class="l">AI 客服全天候在线,承接预约与咨询</div></div>
+    <div class="stat reveal"><div class="n">100<em>%</em></div><div class="l">前端交互均可点击体验(演示数据)</div></div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Platform Modules · 平台六大模块</span>
+      <h2>从获客到复购的<br>完整 AI 医美经营闭环</h2>
+      <p class="lead">每一个模块都可独立体验,也可以串联成完整的顾客旅程:AI 检测发现需求 → 智能预约完成转化 → 会员体系沉淀关系 → 商城延展客单 → AI 客服全程陪伴 → 数据分析驱动经营决策。</p>
+    </div>
+
+    <div class="grid g3 reveal">
+      <a href="booking.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="30" rx="4" fill="#e8c3d1" stroke="#b8355f" stroke-width="1.6"/><path d="M8 18h32M16 6v8M32 6v8" stroke="#b8355f" stroke-width="1.6" stroke-linecap="round"/><circle cx="24" cy="29" r="4" fill="#b8355f"/></svg>
+        <h3>预约系统</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">项目 → 顾问 → 时段一步到位,支持在线选档与预约记录管理。</p>
+        <span class="tag" style="margin-top:1rem">进入体验 →</span>
+      </a>
+      <a href="membership.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="22" rx="4" fill="#eef1f7" stroke="#243F6E" stroke-width="1.6"/><circle cx="16" cy="25" r="4" fill="#243F6E"/><path d="M24 22h14M24 28h10" stroke="#243F6E" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>会员管理</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">四级会员体系,积分成长、权益说明与消费历程一目了然。</p>
+        <span class="tag indigo" style="margin-top:1rem">进入体验 →</span>
+      </a>
+      <a href="skin-analysis.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15" fill="#fbe9f0" stroke="#b8355f" stroke-width="1.6"/><circle cx="24" cy="24" r="15" fill="none" stroke="#b8355f" stroke-width="1" stroke-dasharray="2 3"/><circle cx="19" cy="21" r="2" fill="#b8355f"/><circle cx="29" cy="21" r="2" fill="#b8355f"/><path d="M19 29q5 4 10 0" stroke="#b8355f" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        <h3>AI 皮肤分析</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">上传照片,15 秒生成六维评分与个性化护理建议。</p>
+        <span class="tag" style="margin-top:1rem">立即体验 →</span>
+      </a>
+      <a href="chatbot.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><path d="M8 12h32v18H20l-8 7v-7H8z" fill="#e6f2f1" stroke="#1B857C" stroke-width="1.6" stroke-linejoin="round"/><circle cx="18" cy="21" r="2" fill="#1B857C"/><circle cx="24" cy="21" r="2" fill="#1B857C"/><circle cx="30" cy="21" r="2" fill="#1B857C"/></svg>
+        <h3>AI 简单客服</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">关键词智能问答,快捷问题一键触达,承接常见咨询。</p>
+        <span class="tag teal" style="margin-top:1rem">进入体验 →</span>
+      </a>
+      <a href="shop.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><path d="M12 18h24l-2 18H14z" fill="#fdf3e7" stroke="#A9862C" stroke-width="1.6" stroke-linejoin="round"/><path d="M18 18v-4a6 6 0 0 1 12 0v4" stroke="#A9862C" stroke-width="1.6" fill="none"/></svg>
+        <h3>网上商城</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">护肤精华、医美套餐与礼品卡,支持购物车与模拟下单。</p>
+        <span class="tag gold" style="margin-top:1rem">进入商城 →</span>
+      </a>
+      <a href="analytics.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><path d="M10 38V22M20 38V12M30 38V26M40 38V18" stroke="#243F6E" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3>数据综合分析</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">营收趋势、项目热度、会员结构与获客渠道一站掌握。</p>
+        <span class="tag indigo" style="margin-top:1rem">查看看板 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="flow" style="background:linear-gradient(180deg,#F5F6F8,#EEF0F4)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Customer Journey · 服务闭环</span>
+      <h2>一次完整的顾客旅程</h2>
+      <p class="lead">六个模块串联成从初识到复购的完整链路,每一步都由数据与 AI 共同支撑。</p>
+    </div>
+    <div class="tl reveal">
+      <div class="tl-item"><div class="dot"></div><div class="yr">01</div><div class="ev">AI 皮肤分析发现护理需求</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">02</div><div class="ev">AI 客服解答疑问,引导决策</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">03</div><div class="ev">在线预约选定项目与顾问</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">04</div><div class="ev">到店服务,积分与会员成长</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">05</div><div class="ev">商城延展居家护理与复购</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">06</div><div class="ev">经营数据反哺运营与选品</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: AI SKIN -->
+<section id="highlight">
+  <div class="wrap split">
+    <div class="visual reveal">
+      <div style="aspect-ratio:4/3;border-radius:6px;background:radial-gradient(circle at 30% 30%,#20304f,#0c1424);display:grid;place-items:center;overflow:hidden">
+        <svg viewBox="0 0 320 240" style="width:88%">
+          <circle cx="160" cy="120" r="72" fill="none" stroke="#e59ebb" stroke-width="1.5" opacity=".55" stroke-dasharray="2 5"/>
+          <circle cx="160" cy="120" r="52" fill="#b8355f" opacity=".22"/>
+          <circle cx="145" cy="108" r="5" fill="#fff" opacity=".85"/>
+          <circle cx="176" cy="108" r="5" fill="#fff" opacity=".85"/>
+          <path d="M144 138q16 12 32 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
+          <g fill="#A9862C"><circle cx="235" cy="70" r="3"/><circle cx="255" cy="130" r="2.4"/><circle cx="225" cy="168" r="2.8"/><circle cx="90" cy="70" r="3"/><circle cx="70" cy="140" r="2.4"/></g>
+          <path d="M160 48v-14M232 90l10-10M232 152l10 10M88 90l-10-10M88 152l-10 10" stroke="#7fd0c4" stroke-width="1.2" opacity=".6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Featured · AI 皮肤分析</span>
+      <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);margin-top:1rem">15 秒,读懂你的肌肤状态</h2>
+      <p class="lead" style="margin-top:1.1rem">上传一张照片,AI 模拟分析水分、油脂、毛孔、细纹、色斑与紧致度六个维度,自动生成个性化护理建议,并可一键关联至预约项目或商城产品——本演示中的分析结果均为模拟生成。</p>
+      <div class="kv">
+        <div><b>六维评分</b><span>水分 / 油脂 / 毛孔 / 细纹 / 色斑 / 紧致度</span></div>
+        <div><b>即时建议</b><span>结合评分自动推荐适合的项目与产品</span></div>
+        <div><b>历史追踪</b><span>可在会员中心查看历次分析与项目记录</span></div>
+      </div>
+      <a href="skin-analysis.html" class="btn btn-outline mt-2">开始 AI 皮肤分析 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREED -->
+<section id="creed" class="creed">
+  <div class="wrap">
+    <span class="eyebrow" style="grid-column:1/-1">Product Principles · 产品理念</span>
+    <h2>把体验的完整度,放在演示的最前面</h2>
+    <div class="principle reveal">
+      <div class="p-n">01</div>
+      <h3>可点、可体验</h3>
+      <p>六大模块的核心交互全部可操作,而非静态效果图,便于真实评审与用户测试。</p>
+    </div>
+    <div class="principle reveal">
+      <div class="p-n">02</div>
+      <h3>统一设计语言</h3>
+      <p>沿用洋红、藏青、墨绿、金色的克制配色与衬线标题,保证多模块视觉一致。</p>
+    </div>
+    <div class="principle reveal">
+      <div class="p-n">03</div>
+      <h3>数据驱动叙事</h3>
+      <p>经营分析看板将各模块产生的行为数据汇总呈现,支撑演示中的决策场景。</p>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/common.js"></script>
+</body>
+</html>

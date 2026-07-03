@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 皮肤分析 · 颜汐 YANXI AI</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27%23B8355F%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2713%27 fill=%27%232c2350%27/%3E%3Ccircle cx=%2746%27 cy=%2720%27 r=%274%27 fill=%27%23A9862C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .analyzer{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.2rem;align-items:flex-start}
+  @media(max-width:900px){.analyzer{grid-template-columns:1fr}}
+  .upload-zone{border:2px dashed var(--line);border-radius:10px;aspect-ratio:3/4;display:grid;place-items:center;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;overflow:hidden;background:var(--surface)}
+  .upload-zone:hover,.upload-zone.drag{border-color:var(--magenta);background:#FBF6F8}
+  .upload-zone .hint-ic{font-size:2.4rem;margin-bottom:.8rem}
+  .upload-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .upload-zone .scan-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,30,54,.05),rgba(20,30,54,.35));display:none;flex-direction:column;justify-content:flex-end;padding:1.4rem;color:#fff;text-align:left}
+  .upload-zone.scanning .scan-overlay{display:flex}
+  .upload-zone .scanbar{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);box-shadow:0 0 16px 2px rgba(169,134,44,.7)}
+  .status-line{font-size:.84rem;margin-top:.5rem;min-height:1.4em}
+  .prog-track{background:rgba(255,255,255,.25);border-radius:100px;height:5px;overflow:hidden;margin-top:.6rem}
+  .prog-fill{height:100%;background:var(--gold);border-radius:100px;width:0%;transition:width .25s linear}
+
+  .score-hero{display:flex;align-items:center;gap:1.6rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.6rem}
+  .score-circle{width:100px;height:100px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(var(--teal) calc(var(--p)*1%), var(--line) 0)}
+  .score-circle .inner{width:78px;height:78px;border-radius:50%;background:var(--surface);display:grid;place-items:center;flex-direction:column}
+  .score-circle b{font-family:var(--serif);font-size:1.5rem}
+  .score-circle small{display:block;font-size:.62rem;color:var(--muted)}
+
+  .metric-row{display:flex;align-items:center;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+  .metric-row:last-child{border-bottom:none}
+  .metric-row .name{width:70px;flex:none;font-size:.86rem}
+  .metric-row .meter-track{flex:1}
+  .metric-row .val{width:42px;text-align:right;font-family:var(--serif);font-weight:700;font-size:.9rem}
+
+  .rec-card{border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+  .rec-card .tip{font-size:.86rem}
+  .rec-card .tip b{color:var(--magenta)}
+
+  .radar-wrap{display:flex;justify-content:center}
+  .history-strip{display:flex;gap:1rem;overflow-x:auto;padding-bottom:.4rem}
+  .history-item{flex:none;width:150px;border:1px solid var(--line);border-radius:6px;padding:1rem;text-align:center}
+  .history-item .sc{font-family:var(--serif);font-weight:900;font-size:1.6rem;color:var(--indigo)}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">平台首页</a><span>/</span><span>AI 皮肤分析</span></div>
+    <span class="kana">AI SKIN ANALYSIS</span>
+    <h1>AI 皮肤分析</h1>
+    <p class="lead">上传一张正面照片,AI 将模拟分析水分、油脂、毛孔、细纹、色斑与紧致度六个维度,约 15 秒生成报告。<b>本页所有分析结果均为随机模拟生成,不构成医学诊断。</b></p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="analyzer">
+      <div>
+        <div class="upload-zone" id="uploadZone">
+          <input type="file" id="fileInput" accept="image/*" style="display:none">
+          <div class="scanbar" id="scanBar" style="display:none"></div>
+          <div id="uploadHint">
+            <div class="hint-ic">📷</div>
+            <p style="font-weight:500">点击或拖拽上传照片</p>
+            <p class="muted" style="font-size:.78rem;margin-top:.4rem">支持 JPG / PNG,仅用于本次演示分析</p>
+          </div>
+          <div class="scan-overlay" id="scanOverlay">
+            <div class="status-line" id="statusLine">正在识别面部特征…</div>
+            <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+          </div>
+        </div>
+        <div class="flex gap-1 mt-2" style="flex-wrap:wrap">
+          <button class="btn btn-ghost btn-sm" id="demoPhotoBtn">使用示例照片</button>
+          <button class="btn btn-primary" id="startBtn" disabled style="flex:1">开始 AI 分析 →</button>
+        </div>
+        <div id="historyBox" class="mt-3" style="display:none">
+          <h3 style="font-size:1rem;margin-bottom:.8rem">历史分析记录</h3>
+          <div class="history-strip" id="historyStrip"></div>
+        </div>
+      </div>
+
+      <div id="resultPane">
+        <div class="empty">
+          <div class="ic">🔬</div>
+          上传照片并开始分析后,报告将显示在这里
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/mock-data.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/skin-analysis.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>预约系统 · 颜汐 YANXI AI</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27%23B8355F%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2713%27 fill=%27%232c2350%27/%3E%3Ccircle cx=%2746%27 cy=%2720%27 r=%274%27 fill=%27%23A9862C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .wizard{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:clamp(20px,4vw,40px)}
+  .step-panel{display:none}
+  .step-panel.active{display:block}
+  .svc-card{border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.2rem;cursor:pointer;transition:all .18s;position:relative}
+  .svc-card:hover{border-color:var(--magenta)}
+  .svc-card.sel{border-color:var(--magenta);background:#FBF6F8;box-shadow:0 0 0 1px var(--magenta) inset}
+  .svc-card .row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+  .svc-card h4{font-family:var(--serif);font-size:1rem}
+  .svc-card .price{font-family:var(--serif);font-weight:700;color:var(--magenta);white-space:nowrap}
+  .svc-card p{font-size:.8rem;color:var(--muted);margin-top:.35rem}
+  .svc-card .meta{font-size:.72rem;color:var(--muted);margin-top:.5rem}
+  .staff-card{border:1px solid var(--line);border-radius:6px;padding:1.2rem;text-align:center;cursor:pointer;transition:all .18s}
+  .staff-card:hover{border-color:var(--magenta)}
+  .staff-card.sel{border-color:var(--magenta);background:#FBF6F8}
+  .staff-avatar{width:64px;height:64px;border-radius:50%;margin:0 auto .8rem;display:grid;place-items:center;color:#fff;font-family:var(--serif);font-weight:700;font-size:1.3rem}
+  .staff-card h4{font-family:var(--serif);font-size:.95rem}
+  .staff-card .role{font-size:.74rem;color:var(--muted);margin-top:.2rem}
+  .day-row{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.4rem;margin-bottom:1.6rem}
+  .day-pill{flex:none;width:66px;padding:.8em .4em;border:1px solid var(--line);border-radius:8px;text-align:center;cursor:pointer;transition:all .18s}
+  .day-pill:hover{border-color:var(--magenta)}
+  .day-pill.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+  .day-pill .wd{font-size:.68rem;color:var(--muted)}
+  .day-pill.sel .wd{color:#cfd4e2}
+  .day-pill .dt{font-family:var(--serif);font-weight:700;font-size:1.1rem;margin-top:.2rem}
+  .time-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:.7rem}
+  .summary-box{background:#FBF6F8;border:1px solid rgba(184,53,95,.2);border-radius:6px;padding:1.3rem 1.4rem;margin-top:1.6rem}
+  .summary-box .row{display:flex;justify-content:space-between;font-size:.86rem;padding:.4rem 0;border-bottom:1px dashed var(--line)}
+  .summary-box .row:last-child{border-bottom:none}
+  .summary-box b{font-weight:500}
+  .wizard-nav{display:flex;justify-content:space-between;margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+  .success-wrap{text-align:center;padding:2rem 0}
+  .success-icon{width:72px;height:72px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:2rem;margin:0 auto 1.4rem}
+  .conf-code{font-family:var(--serif);font-weight:900;font-size:1.6rem;color:var(--indigo);letter-spacing:.06em;margin:.6rem 0 1.6rem}
+  .mybooking-card{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">平台首页</a><span>/</span><span>预约系统</span></div>
+    <span class="kana">SMART BOOKING</span>
+    <h1>预约系统</h1>
+    <p class="lead">选择项目、顾问与时段,一分钟完成预约。以下流程与排期均为演示数据。</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap-narrow">
+    <ul class="steps" id="steps">
+      <li data-n="1" class="active">选择项目</li>
+      <li data-n="2">选择顾问</li>
+      <li data-n="3">选择时间</li>
+      <li data-n="4">确认信息</li>
+      <li data-n="5">完成</li>
+    </ul>
+
+    <div class="wizard">
+
+      <!-- STEP 1: SERVICE -->
+      <div class="step-panel active" data-step="1">
+        <h3 style="margin-bottom:1rem">选择项目</h3>
+        <div class="pillgroup" id="svcCatFilter" style="margin-bottom:1.4rem"></div>
+        <div class="grid g2" id="svcList"></div>
+      </div>
+
+      <!-- STEP 2: STAFF -->
+      <div class="step-panel" data-step="2">
+        <h3 style="margin-bottom:1rem">选择顾问 / 医师</h3>
+        <div class="grid g3" id="staffList"></div>
+      </div>
+
+      <!-- STEP 3: DATE & TIME -->
+      <div class="step-panel" data-step="3">
+        <h3 style="margin-bottom:1rem">选择日期</h3>
+        <div class="day-row" id="dayRow"></div>
+        <h3 style="margin-bottom:1rem">选择时段</h3>
+        <div class="time-grid" id="timeGrid"></div>
+      </div>
+
+      <!-- STEP 4: CONFIRM -->
+      <div class="step-panel" data-step="4">
+        <h3 style="margin-bottom:1rem">填写联系信息</h3>
+        <div class="field-row">
+          <div class="field"><label>姓名</label><input type="text" id="fName" placeholder="请输入您的姓名" value="陈小姐"></div>
+          <div class="field"><label>手机号</label><input type="tel" id="fPhone" placeholder="请输入手机号" value="138****6699"></div>
+        </div>
+        <div class="field"><label>备注(可选)</label><textarea id="fNote" placeholder="如有过敏史、特殊需求请提前告知"></textarea></div>
+        <div class="summary-box" id="summaryBox"></div>
+      </div>
+
+      <!-- STEP 5: SUCCESS -->
+      <div class="step-panel" data-step="5">
+        <div class="success-wrap">
+          <div class="success-icon">✓</div>
+          <h3>预约提交成功</h3>
+          <p class="muted" style="margin-top:.6rem">您的预约已加入「我的预约」,专属顾问将在到店前与您确认</p>
+          <div class="conf-code" id="confCode"></div>
+          <div class="summary-box" id="summaryBox2" style="text-align:left"></div>
+          <div class="hero-cta" style="justify-content:center;margin-top:2rem">
+            <a href="#mybookings" class="btn btn-primary" id="viewBookingsBtn">查看我的预约</a>
+            <a href="index.html" class="btn btn-ghost">返回首页</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="wizard-nav" id="wizardNav">
+        <button class="btn btn-ghost" id="prevBtn">← 上一步</button>
+        <button class="btn btn-primary" id="nextBtn" disabled>下一步 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MY BOOKINGS -->
+<section id="mybookings" style="background:linear-gradient(180deg,#F5F6F8,#EEF0F4)">
+  <div class="wrap-narrow">
+    <div class="shead reveal">
+      <span class="eyebrow">My Bookings · 我的预约</span>
+      <h2>预约记录</h2>
+      <p class="lead">包含历史预约与本次演示中新建的预约,可在此查看或取消。</p>
+    </div>
+    <div id="bookingsList" class="grid" style="gap:1rem"></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/mock-data.js"></script>
+<script src="assets/js/booking.js"></script>
+</body>
+</html>

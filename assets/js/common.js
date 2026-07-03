@@ -1,5 +1,5 @@
 /* ===========================================================
-   颜汐 YANXI AI · shared chrome (nav / footer) + small utilities
+   依欣 YIXIN AI · shared chrome (nav / footer) + small utilities
    =========================================================== */
 
 const YX = (() => {
@@ -28,7 +28,7 @@ const YX = (() => {
       <div class="demo-banner">这是 <b>演示原型</b> · 全部数据、AI 结果与支付流程均为模拟展示,不对接真实医疗 / 支付系统</div>
       <header class="nav">
         <div class="wrap nav-inner">
-          <a href="index.html" class="brand">颜汐<span>YANXI AI BEAUTY</span></a>
+          <a href="index.html" class="brand">依欣<span>YIXIN AI BEAUTY</span></a>
           <nav class="nav-links" id="navLinks">${links}</nav>
           <div class="nav-cta">
             <a href="shop.html#cart" class="nav-cart" id="navCart" aria-label="购物车" title="购物车">
@@ -55,7 +55,7 @@ const YX = (() => {
       <footer>
         <div class="wrap">
           <div class="foot-top">
-            <a href="index.html" class="brand" style="color:var(--ink);text-decoration:none">颜汐<span style="color:var(--magenta)">YANXI AI BEAUTY</span></a>
+            <a href="index.html" class="brand" style="color:var(--ink);text-decoration:none">依欣<span style="color:var(--magenta)">YIXIN AI BEAUTY</span></a>
             <nav class="foot-links">
               <a href="booking.html">预约系统</a>
               <a href="membership.html">会员中心</a>
@@ -68,7 +68,7 @@ const YX = (() => {
           <p class="disclaimer">
             本站为「AI 医美平台」产品演示原型,用于展示预约、会员、AI 皮肤分析、智能客服、商城与数据分析六大模块的交互设计与信息架构。页面中的价格、排期、分析结果、订单与经营数据均为<b>模拟生成</b>,不连接真实医院信息系统、支付网关或第三方 AI 服务,不构成诊疗建议、疗效承诺或商业报价,仅供产品演示与内部评审使用。
           </p>
-          <p class="disclaimer" style="border-top:none;padding-top:.8rem">Developer: <b>benihuang78@gmail.com</b></p>
+          <p class="disclaimer" style="border-top:none;padding-top:.8rem">联系开发者 <b>benihuang78@gmail.com</b></p>
         </div>
       </footer>
     `;

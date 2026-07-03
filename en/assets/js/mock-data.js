@@ -1,5 +1,5 @@
 ﻿/* ===========================================================
-   YANXI AI · English mock data
+   YIXIN AI · English mock data
    Demo only: all data is simulated and not connected to real services.
    =========================================================== */
 
@@ -33,7 +33,7 @@ const YXDATA = (() => {
     { id:"p-07", cat:"Treatment Package", name:"Photofacial 3-Session Package", price:3280, originalPrice:3840, tag:"Package", rating:4.9, sold:612, grad:["#fbe9f0","#b8355f"], desc:"Three-session schedule based on AI skin assessment." },
     { id:"p-08", cat:"Treatment Package", name:"Annual Skin Booster Package (6 sessions)", price:7980, originalPrice:9480, tag:"Member", rating:5.0, sold:340, grad:["#eef1f7","#243f6e"], desc:"Year-round hydration management with member benefits." },
     { id:"p-09", cat:"Device Treatment", name:"RF Contour Tightening Trial", price:1980, originalPrice:2480, tag:"Trial", rating:4.8, sold:288, grad:["#e6f2f1","#1b857c"], desc:"First-time trial including AI pre-assessment." },
-    { id:"p-10", cat:"Gift Card", name:"YANXI E-Gift Card ¥1000", price:1000, originalPrice:null, tag:"E-card", rating:5.0, sold:150, grad:["#fdf3e7","#c9a23c"], desc:"Can be used for demo treatments or shop products." },
+    { id:"p-10", cat:"Gift Card", name:"YIXIN E-Gift Card ¥1000", price:1000, originalPrice:null, tag:"E-card", rating:5.0, sold:150, grad:["#fdf3e7","#c9a23c"], desc:"Can be used for demo treatments or shop products." },
     { id:"p-11", cat:"Serum", name:"Collagen Firming Eye Cream", price:560, originalPrice:680, tag:null, rating:4.6, sold:1023, grad:["#f6ede0","#a9862c"], desc:"Lightweight eye care for fine lines and laxity." },
     { id:"p-12", cat:"Device Treatment", name:"Skin Barrier Test + Custom Plan", price:198, originalPrice:298, tag:"Starter", rating:4.9, sold:3025, grad:["#eef1f7","#243f6e"], desc:"AI scan plus 1-on-1 consultant interpretation." },
   ];
@@ -82,7 +82,7 @@ const YXDATA = (() => {
 
   const CHAT_QUICK = ["Pricing", "Booking", "AI skin scan", "Aftercare", "Store address", "Promotions"];
   const CHAT_RULES = [
-    { kws:["hi","hello","hey"], reply:"Hi, I am YANXI AI assistant. Ask me about booking, pricing, AI skin analysis, membership, aftercare, or store information." },
+    { kws:["hi","hello","hey"], reply:"Hi, I am YIXIN AI assistant. Ask me about booking, pricing, AI skin analysis, membership, aftercare, or store information." },
     { kws:["price","cost","pricing","fee"], reply:"Demo price ranges: basic care ¥360-¥880, light therapy ¥1280-¥2480, injectables ¥1580-¥3200. A custom plan can be suggested after the free AI skin scan." },
     { kws:["book","booking","appointment","reserve"], reply:"Booking takes about one minute: choose a service, select a consultant, pick a date and time, then confirm your contact details." },
     { kws:["ai","scan","skin","analysis"], reply:"AI Skin Analysis simulates six scores: hydration, oil, pores, fine lines, pigment, and firmness, then recommends related treatments and products." },

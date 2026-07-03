@@ -1,5 +1,5 @@
 ﻿/* ===========================================================
-   YANXI AI · Japanese shared chrome (nav / footer) + small utilities
+   YIXIN AI · Japanese shared chrome (nav / footer) + small utilities
    =========================================================== */
 
 const YX = (() => {
@@ -28,7 +28,7 @@ const YX = (() => {
       <div class="demo-banner">これは <b>デモ用プロトタイプ</b> です。データ、AI結果、決済フローはすべて模擬表示で、実際の医療 / 決済システムには接続していません</div>
       <header class="nav">
         <div class="wrap nav-inner">
-          <a href="index.html" class="brand">颜汐<span>YANXI AI BEAUTY</span></a>
+          <a href="index.html" class="brand">依欣<span>YIXIN AI BEAUTY</span></a>
           <nav class="nav-links" id="navLinks">${links}</nav>
           <div class="nav-cta">
             <a href="shop.html#cart" class="nav-cart" id="navCart" aria-label="カート" title="カート">
@@ -55,7 +55,7 @@ const YX = (() => {
       <footer>
         <div class="wrap">
           <div class="foot-top">
-            <a href="index.html" class="brand" style="color:var(--ink);text-decoration:none">颜汐<span style="color:var(--magenta)">YANXI AI BEAUTY</span></a>
+            <a href="index.html" class="brand" style="color:var(--ink);text-decoration:none">依欣<span style="color:var(--magenta)">YIXIN AI BEAUTY</span></a>
             <nav class="foot-links">
               <a href="booking.html">予約</a>
               <a href="membership.html">会員</a>
@@ -68,7 +68,7 @@ const YX = (() => {
           <p class="disclaimer">
             本サイトは「AI美容医療プラットフォーム」の製品デモです。予約、会員、AI肌分析、AI相談、ショップ、データ分析の6機能を確認するためのプロトタイプで、価格、予約枠、分析結果、注文、経営データはすべて<b>模擬生成</b>です。実際の医療情報システム、決済ゲートウェイ、第三者AIサービスには接続しておらず、診療上の助言、効果保証、正式見積ではありません。
           </p>
-          <p class="disclaimer" style="border-top:none;padding-top:.8rem">Developer: <b>benihuang78@gmail.com</b></p>
+          <p class="disclaimer" style="border-top:none;padding-top:.8rem">联系开发者 <b>benihuang78@gmail.com</b></p>
         </div>
       </footer>
     `;

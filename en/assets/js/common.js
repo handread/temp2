@@ -1,5 +1,5 @@
 ﻿/* ===========================================================
-   YANXI AI · English shared chrome (nav / footer) + utilities
+   YIXIN AI · English shared chrome (nav / footer) + utilities
    =========================================================== */
 
 const YX = (() => {
@@ -27,7 +27,7 @@ const YX = (() => {
       <div class="demo-banner">This is a <b>demo prototype</b>. All data, AI results, and payment flows are simulated and are not connected to real medical or payment systems.</div>
       <header class="nav">
         <div class="wrap nav-inner">
-          <a href="index.html" class="brand">颜汐<span>YANXI AI BEAUTY</span></a>
+          <a href="index.html" class="brand">依欣<span>YIXIN AI BEAUTY</span></a>
           <nav class="nav-links" id="navLinks">${links}</nav>
           <div class="nav-cta">
             <a href="shop.html#cart" class="nav-cart" id="navCart" aria-label="Cart" title="Cart">
@@ -54,7 +54,7 @@ const YX = (() => {
       <footer>
         <div class="wrap">
           <div class="foot-top">
-            <a href="index.html" class="brand" style="color:var(--ink);text-decoration:none">颜汐<span style="color:var(--magenta)">YANXI AI BEAUTY</span></a>
+            <a href="index.html" class="brand" style="color:var(--ink);text-decoration:none">依欣<span style="color:var(--magenta)">YIXIN AI BEAUTY</span></a>
             <nav class="foot-links">
               <a href="booking.html">Booking</a>
               <a href="membership.html">Membership</a>
@@ -67,7 +67,7 @@ const YX = (() => {
           <p class="disclaimer">
             This site is a product demo for an AI beauty medical platform, showing booking, membership, AI skin analysis, AI assistant, shop, and analytics modules. Prices, schedules, analysis results, orders, and operating data are <b>simulated</b>. It is not connected to real hospital systems, payment gateways, or third-party AI services, and does not provide medical advice, efficacy claims, or commercial quotations.
           </p>
-          <p class="disclaimer" style="border-top:none;padding-top:.8rem">Developer: <b>benihuang78@gmail.com</b></p>
+          <p class="disclaimer" style="border-top:none;padding-top:.8rem">联系开发者 <b>benihuang78@gmail.com</b></p>
         </div>
       </footer>
     `;

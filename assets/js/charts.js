@@ -1,5 +1,5 @@
 /* ===========================================================
-   颜汐 YANXI AI · tiny SVG chart helpers
+   依欣 YIXIN AI · tiny SVG chart helpers
    thin marks · 2px lines · 4px rounded bar caps · hairline grid
    hover tooltip · table-view toggle (per dataviz skill guidance)
    =========================================================== */

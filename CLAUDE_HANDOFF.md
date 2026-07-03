@@ -12,7 +12,8 @@ Date: 2026-07-03
 - Added English mock data in `en/assets/js/mock-data.js`.
 - Added `日本語` and `English` language switches in the Chinese navigation.
 - Added cross-links between Chinese, Japanese, and English versions.
-- Updated developer credit to `Developer: benihuang78@gmail.com` in the shared footers.
+- Renamed the brand from `颜汐 / YANXI` to `依欣 / YIXIN` across Chinese, Japanese, and English pages.
+- Updated footer credit to `联系开发者 benihuang78@gmail.com` in the shared footers.
 
 ## Notes
 

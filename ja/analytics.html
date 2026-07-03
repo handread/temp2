@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>経営分析 · 颜汐 YANXI AI</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27%23B8355F%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2713%27 fill=%27%232c2350%27/%3E%3Ccircle cx=%2746%27 cy=%2720%27 r=%274%27 fill=%27%23A9862C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+  @media(max-width:1000px){.kpi-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  @media(max-width:860px){.row2{grid-template-columns:1fr}}
+  .donut-flex{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;justify-content:center}
+  .range-filter{display:flex;gap:.4rem}
+  .range-filter .pill{padding:.35em .9em;font-size:.76rem}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">ホーム</a><span>/</span><span>経営分析</span></div>
+    <span class="kana">BUSINESS INTELLIGENCE</span>
+    <h1>データ総合分析</h1>
+    <p class="lead">売上推移、施術热度、会员结构与获客渠道一站掌握,辅助经营决策。以下图表均为模擬数据。</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kpi-grid reveal" id="kpiGrid"></div>
+  </div>
+</section>
+
+<section style="padding-top:1.2rem">
+  <div class="wrap">
+    <div class="chart-card reveal">
+      <div class="chart-head">
+        <div>
+          <h3>売上推移</h3>
+          <div class="sub">直近7か月の売上と目標比較(単位:万元)</div>
+        </div>
+        <div class="flex gap-2" style="align-items:center;flex-wrap:wrap">
+          <div class="chart-legend" id="revenueLegend"></div>
+          <button class="table-toggle" data-toggle-table="revenueChart">データ表を見る</button>
+        </div>
+      </div>
+      <div id="revenueChart" style="height:280px"></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:1.2rem">
+  <div class="wrap row2">
+    <div class="chart-card reveal">
+      <div class="chart-head">
+        <div><h3>施術热度</h3><div class="sub">近 30 天各施術予約人数</div></div>
+        <button class="table-toggle" data-toggle-table="serviceChart">データ表を見る</button>
+      </div>
+      <div id="serviceChart"></div>
+    </div>
+    <div class="chart-card reveal">
+      <div class="chart-head">
+        <div><h3>会員ランク構成</h3><div class="sub">現在の会員数をランク別に表示</div></div>
+        <button class="table-toggle" data-toggle-table="tierChart">データ表を見る</button>
+      </div>
+      <div class="donut-flex">
+        <div id="tierChart"></div>
+        <div class="chart-legend" id="tierLegend" style="flex-direction:column;gap:.7rem"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:1.2rem">
+  <div class="wrap row2">
+    <div class="chart-card reveal">
+      <div class="chart-head">
+        <div><h3>集客チャネル比率</h3><div class="sub">直近30日の予約流入元</div></div>
+        <button class="table-toggle" data-toggle-table="channelChart">データ表を見る</button>
+      </div>
+      <div class="donut-flex">
+        <div id="channelChart"></div>
+        <div class="chart-legend" id="channelLegend" style="flex-direction:column;gap:.7rem"></div>
+      </div>
+    </div>
+    <div class="chart-card reveal">
+      <div class="chart-head">
+        <div><h3>AI肌分析 · 主な悩み分布</h3><div class="sub">直近30日のAI診断で検出されたケア需要(人数)</div></div>
+        <button class="table-toggle" data-toggle-table="skinChart">データ表を見る</button>
+      </div>
+      <div id="skinChart"></div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/mock-data.js"></script>
+<script src="assets/js/charts.js"></script>
+<script src="assets/js/analytics.js"></script>
+</body>
+</html>
+
+

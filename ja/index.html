@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>颜汐 YANXI AI · AI美容医療プラットフォームデモ</title>
+<meta name="description" content="颜汐 YANXI AI —— AI美容医療プラットフォーム製品デモ:予約システム、会員管理、AI肌分析、AI相談、セレクトショップ、データ総合分析">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27%23B8355F%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2713%27 fill=%27%232c2350%27/%3E%3Ccircle cx=%2746%27 cy=%2720%27 r=%274%27 fill=%27%23A9862C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kana">AI BEAUTY PLATFORM</span>
+      <h1>美しくなる体験に<br>いつも<span class="accent">AI</span>相伴</h1>
+      <p class="lead">颜汐は美容医療機関向けのAIスマートプラットフォームデモです。AI肌分析、スマート予約、会員運営、経営データ分析をつなぎ、顧客体験と運営判断を一つの流れにまとめます。本ページは<b>操作可能な製品デモ</b>で、データとAI結果はすべて模擬です。</p>
+      <div class="hero-cta">
+        <a href="skin-analysis.html" class="btn btn-primary">無料でAI肌分析を体験 →</a>
+        <a href="booking.html" class="btn btn-ghost">オンライン予約</a>
+      </div>
+    </div>
+    <div class="cell-stage">
+      <svg class="cell-svg breathe" viewBox="0 0 400 400" role="img" aria-label="AI 皮肤扫描示意">
+        <defs>
+          <radialGradient id="scanGrad" cx="42%" cy="38%">
+            <stop offset="0%" stop-color="#fbe9f0"/>
+            <stop offset="55%" stop-color="#e59ebb"/>
+            <stop offset="100%" stop-color="#b8355f"/>
+          </radialGradient>
+          <clipPath id="faceClip"><circle cx="200" cy="200" r="108"/></clipPath>
+        </defs>
+        <circle cx="200" cy="200" r="150" fill="url(#scanGrad)" opacity=".18"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#b8355f" stroke-width="1.5" opacity=".35" stroke-dasharray="2 6"/>
+        <g class="orbit">
+          <circle cx="200" cy="55" r="5" fill="#A9862C"/>
+          <circle cx="330" cy="150" r="4" fill="#b8355f"/>
+          <circle cx="300" cy="300" r="4.5" fill="#1B857C"/>
+          <circle cx="90"  cy="300" r="4" fill="#b8355f"/>
+          <circle cx="65"  cy="140" r="4.5" fill="#243F6E"/>
+        </g>
+        <circle cx="200" cy="200" r="108" fill="url(#scanGrad)" opacity=".9"/>
+        <!-- abstract face silhouette -->
+        <g clip-path="url(#faceClip)" opacity=".85">
+          <ellipse cx="200" cy="210" rx="52" ry="66" fill="#2c2350" opacity=".18"/>
+          <circle cx="180" cy="190" r="4" fill="#2c2350" opacity=".5"/>
+          <circle cx="222" cy="190" r="4" fill="#2c2350" opacity=".5"/>
+          <path d="M186 228q14 10 28 0" stroke="#2c2350" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".5"/>
+        </g>
+        <!-- scan grid lines -->
+        <g clip-path="url(#faceClip)" opacity=".55">
+          <line x1="92" y1="200" x2="308" y2="200" stroke="#A9862C" stroke-width="1"/>
+          <line x1="200" y1="92" x2="200" y2="308" stroke="#A9862C" stroke-width="1"/>
+          <rect x="92" y="128" width="216" class="scanline" height="2" fill="#A9862C"/>
+        </g>
+        <circle cx="200" cy="200" r="108" fill="none" stroke="#fff" stroke-width="2" opacity=".5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <div class="stat reveal"><div class="n">6<em>大</em></div><div class="l">6つの主要機能で集客、サービス、経営をカバー</div></div>
+    <div class="stat reveal"><div class="n">15<em>秒</em></div><div class="l">AI肌分析は平均15秒で多角的レポートを生成</div></div>
+    <div class="stat reveal"><div class="n">24<em>h</em></div><div class="l">AI相談が24時間、予約と問い合わせをサポート</div></div>
+    <div class="stat reveal"><div class="n">100<em>%</em></div><div class="l">フロント操作をすべて体験可能(デモデータ)</div></div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<section id="modules">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Platform Modules · 6つのプラットフォーム機能</span>
+      <h2>集客からリピートまで<br>AI美容医療の運営フロー</h2>
+      <p class="lead">各機能は単独でも体験でき、顧客の流れとしても連携します。AI診断でニーズを発見 → スマート予約で転換 → 会員制度で関係を蓄積 → ショップで客単価を拡張 → AI相談が継続支援 → データ分析で経営判断を支えます。</p>
+    </div>
+
+    <div class="grid g3 reveal">
+      <a href="booking.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="30" rx="4" fill="#e8c3d1" stroke="#b8355f" stroke-width="1.6"/><path d="M8 18h32M16 6v8M32 6v8" stroke="#b8355f" stroke-width="1.6" stroke-linecap="round"/><circle cx="24" cy="29" r="4" fill="#b8355f"/></svg>
+        <h3>予約システム</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">施術 → 担当 → 时段一步到位,支持在线选档与予約履歴管理。</p>
+        <span class="tag" style="margin-top:1rem">体験する →</span>
+      </a>
+      <a href="membership.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="22" rx="4" fill="#eef1f7" stroke="#243F6E" stroke-width="1.6"/><circle cx="16" cy="25" r="4" fill="#243F6E"/><path d="M24 22h14M24 28h10" stroke="#243F6E" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <h3>会員管理</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">4段階の会員制度,积分成长、权益说明与消费历程一目了然。</p>
+        <span class="tag indigo" style="margin-top:1rem">体験する →</span>
+      </a>
+      <a href="skin-analysis.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15" fill="#fbe9f0" stroke="#b8355f" stroke-width="1.6"/><circle cx="24" cy="24" r="15" fill="none" stroke="#b8355f" stroke-width="1" stroke-dasharray="2 3"/><circle cx="19" cy="21" r="2" fill="#b8355f"/><circle cx="29" cy="21" r="2" fill="#b8355f"/><path d="M19 29q5 4 10 0" stroke="#b8355f" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        <h3>AI肌分析</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">写真をアップロードし、約15秒で6項目スコアと個別ケア提案を生成。</p>
+        <span class="tag" style="margin-top:1rem">今すぐ体験 →</span>
+      </a>
+      <a href="chatbot.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><path d="M8 12h32v18H20l-8 7v-7H8z" fill="#e6f2f1" stroke="#1B857C" stroke-width="1.6" stroke-linejoin="round"/><circle cx="18" cy="21" r="2" fill="#1B857C"/><circle cx="24" cy="21" r="2" fill="#1B857C"/><circle cx="30" cy="21" r="2" fill="#1B857C"/></svg>
+        <h3>AI簡易相談</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">キーワード型のスマート回答とクイック質問で、よくある相談に対応。</p>
+        <span class="tag teal" style="margin-top:1rem">体験する →</span>
+      </a>
+      <a href="shop.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><path d="M12 18h24l-2 18H14z" fill="#fdf3e7" stroke="#A9862C" stroke-width="1.6" stroke-linejoin="round"/><path d="M18 18v-4a6 6 0 0 1 12 0v4" stroke="#A9862C" stroke-width="1.6" fill="none"/></svg>
+        <h3>オンラインショップ</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">美容液、美容医療セット、ギフトカードをカートと模擬注文で体験。</p>
+        <span class="tag gold" style="margin-top:1rem">ショップを見る →</span>
+      </a>
+      <a href="analytics.html" class="card hoverable" style="text-decoration:none;color:inherit">
+        <svg class="ic" viewBox="0 0 48 48"><path d="M10 38V22M20 38V12M30 38V26M40 38V18" stroke="#243F6E" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3>データ総合分析</h3>
+        <p class="muted" style="font-size:.86rem;margin-top:.5rem">売上推移、施術热度、会员结构与获客渠道一站掌握。</p>
+        <span class="tag indigo" style="margin-top:1rem">ダッシュボードを見る →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="flow" style="background:linear-gradient(180deg,#F5F6F8,#EEF0F4)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Customer Journey · サービスフロー</span>
+      <h2>顧客体験の一連の流れ</h2>
+      <p class="lead">6つの機能が初回接点からリピートまでをつなぎ、各ステップをデータとAIが支えます。</p>
+    </div>
+    <div class="tl reveal">
+      <div class="tl-item"><div class="dot"></div><div class="yr">01</div><div class="ev">AI肌分析でケア需要を発見</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">02</div><div class="ev">AI相談が疑問に答え、判断を支援</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">03</div><div class="ev">オンライン予約选定施術与担当</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">04</div><div class="ev">来店サービス、ポイント、会員成長</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">05</div><div class="ev">ショップでホームケアとリピートを促進</div></div>
+      <div class="tl-item"><div class="dot"></div><div class="yr">06</div><div class="ev">経営データが運営と商品選定に反映</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT: AI SKIN -->
+<section id="highlight">
+  <div class="wrap split">
+    <div class="visual reveal">
+      <div style="aspect-ratio:4/3;border-radius:6px;background:radial-gradient(circle at 30% 30%,#20304f,#0c1424);display:grid;place-items:center;overflow:hidden">
+        <svg viewBox="0 0 320 240" style="width:88%">
+          <circle cx="160" cy="120" r="72" fill="none" stroke="#e59ebb" stroke-width="1.5" opacity=".55" stroke-dasharray="2 5"/>
+          <circle cx="160" cy="120" r="52" fill="#b8355f" opacity=".22"/>
+          <circle cx="145" cy="108" r="5" fill="#fff" opacity=".85"/>
+          <circle cx="176" cy="108" r="5" fill="#fff" opacity=".85"/>
+          <path d="M144 138q16 12 32 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
+          <g fill="#A9862C"><circle cx="235" cy="70" r="3"/><circle cx="255" cy="130" r="2.4"/><circle cx="225" cy="168" r="2.8"/><circle cx="90" cy="70" r="3"/><circle cx="70" cy="140" r="2.4"/></g>
+          <path d="M160 48v-14M232 90l10-10M232 152l10 10M88 90l-10-10M88 152l-10 10" stroke="#7fd0c4" stroke-width="1.2" opacity=".6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Featured · AI肌分析</span>
+      <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);margin-top:1rem">15 秒,读懂你的肌肤状態</h2>
+      <p class="lead" style="margin-top:1.1rem">上传一张照片,AI 模擬分析水分、油脂、毛孔、细纹、色斑与紧致度六个维度,自动生成个性化ケア提案,并可一键关联至预约施術或商城产品——本演示中的分析结果均为模擬生成。</p>
+      <div class="kv">
+        <div><b>6項目スコア</b><span>水分 / 皮脂 / 毛穴 / 小ジワ / シミ / ハリ</span></div>
+        <div><b>即時提案</b><span>结合评分自动推荐适合的施術与产品</span></div>
+        <div><b>履歴追跡</b><span>可在会員センター查看历次分析与施術记录</span></div>
+      </div>
+      <a href="skin-analysis.html" class="btn btn-outline mt-2">AI肌分析を開始 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREED -->
+<section id="creed" class="creed">
+  <div class="wrap">
+    <span class="eyebrow" style="grid-column:1/-1">Product Principles · 製品理念</span>
+    <h2>体験の完成度をデモの中心に</h2>
+    <div class="principle reveal">
+      <div class="p-n">01</div>
+      <h3>クリックでき、体験できる</h3>
+      <p>六大模块的核心交互すべて可操作,而非静态效果图,便于真实评审与用户测试。</p>
+    </div>
+    <div class="principle reveal">
+      <div class="p-n">02</div>
+      <h3>統一されたデザイン言語</h3>
+      <p>マゼンタ、ネイビー、ティール、ゴールドの抑えた配色とセリフ体見出しで、複数機能の視覚的一貫性を保ちます。</p>
+    </div>
+    <div class="principle reveal">
+      <div class="p-n">03</div>
+      <h3>データ駆動の体験設計</h3>
+      <p>経営分析看板将各模块产生的行为数据汇总呈现,支撑演示中的决策场景。</p>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/common.js"></script>
+</body>
+</html>
+
+

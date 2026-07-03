@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会員センター · 颜汐 YANXI AI</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27%23B8355F%27/%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2713%27 fill=%27%232c2350%27/%3E%3Ccircle cx=%2746%27 cy=%2720%27 r=%274%27 fill=%27%23A9862C%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .mcard{border-radius:14px;padding:2rem 2.2rem;color:#fff;position:relative;overflow:hidden;background:linear-gradient(135deg,#2b3a5c,#141E36 60%,#1c1030);box-shadow:0 24px 60px -24px rgba(20,30,54,.5)}
+  .mcard::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% -10%,rgba(255,255,255,.14),transparent 55%)}
+  .mcard .top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:1}
+  .mcard .tierbadge{display:inline-flex;align-items:center;gap:.4em;padding:.35em .9em;border-radius:100px;font-size:.76rem;letter-spacing:.05em;background:rgba(255,255,255,.14);backdrop-filter:blur(4px)}
+  .mcard .chip{width:38px;height:28px;border-radius:5px;background:linear-gradient(135deg,#d9c690,#a9862c)}
+  .mcard h2{color:#fff;font-size:1.5rem;margin-top:1.6rem;position:relative;z-index:1}
+  .mcard .mid{font-size:.8rem;color:#AEB6CC;margin-top:.3rem;letter-spacing:.05em;position:relative;z-index:1}
+  .mcard .points-row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:1.8rem;position:relative;z-index:1}
+  .mcard .points{font-family:var(--serif);font-weight:900;font-size:2.2rem}
+  .mcard .points small{font-family:var(--sans);font-weight:400;font-size:.7rem;color:#AEB6CC;display:block;letter-spacing:.05em}
+  .progress-wrap{margin-top:1.5rem;position:relative;z-index:1}
+  .progress-wrap .lbl{display:flex;justify-content:space-between;font-size:.76rem;color:#AEB6CC;margin-bottom:.5rem}
+  .progress-track{background:rgba(255,255,255,.16);border-radius:100px;height:8px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold),#e3c467)}
+
+  .tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  @media(max-width:900px){.tier-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.tier-grid{grid-template-columns:1fr}}
+  .tier-card{border:1px solid var(--line);border-radius:8px;padding:1.4rem 1.2rem;background:var(--surface);position:relative}
+  .tier-card.current{border-color:var(--magenta);box-shadow:0 0 0 1px var(--magenta)}
+  .tier-card .swatch{width:28px;height:28px;border-radius:50%;margin-bottom:.9rem}
+  .tier-card h4{font-family:var(--serif);font-size:1.05rem}
+  .tier-card .min{font-size:.76rem;color:var(--muted);margin-top:.2rem}
+  .tier-card ul{margin-top:1rem;padding-left:0;list-style:none;font-size:.8rem;color:var(--ink-soft)}
+  .tier-card li{padding:.3rem 0;display:flex;gap:.5em}
+  .tier-card li::before{content:"✓";color:var(--teal);font-weight:700}
+  .current-flag{position:absolute;top:-11px;right:14px;background:var(--magenta);color:#fff;font-size:.68rem;padding:.25em .7em;border-radius:100px}
+
+  .redeem-item{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+  .redeem-item:last-child{border-bottom:none}
+  .redeem-item .info h5{font-family:var(--serif);font-size:.95rem}
+  .redeem-item .info span{font-size:.78rem;color:var(--gold)}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">ホーム</a><span>/</span><span>会員センター</span></div>
+    <span class="kana">MEMBERSHIP CENTER</span>
+    <h1>会員センター</h1>
+    <p class="lead">会員ランク、ポイント、成長履歴を確認し、専用特典を利用できます。以下はデモアカウントのデータです。</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="grid" style="grid-template-columns:1.1fr .9fr;gap:2rem" id="memberTop">
+      <div class="mcard reveal" id="memberCard"></div>
+      <div class="card reveal" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 style="margin-bottom:.6rem">友人紹介で特典を共有</h3>
+        <p class="muted" style="font-size:.86rem">友人が招待コードを使って初回利用を完了すると、双方に200ポイントを付与します。</p>
+        <div class="flex gap-1 center-y mt-2">
+          <input type="text" id="inviteCode" readonly value="YANXI-CX0812" style="max-width:200px">
+          <button class="btn btn-outline btn-sm" id="copyInvite">招待コードをコピー</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section id="tiers" style="background:linear-gradient(180deg,#F5F6F8,#EEF0F4)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Tier Benefits · 会員ランク</span>
+      <h2>4段階の会員制度</h2>
+      <p class="lead">累計利用額に応じてランクが上がり、特典も広がります。</p>
+    </div>
+    <div class="tier-grid reveal" id="tierGrid"></div>
+  </div>
+</section>
+
+<!-- REDEEM + HISTORY -->
+<section id="detail">
+  <div class="wrap">
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:2rem">
+
+      <div class="reveal">
+        <div class="shead" style="margin-bottom:1.4rem">
+          <span class="eyebrow">Points Redemption · ポイント交換</span>
+          <h2 style="font-size:1.6rem">ポイント交換</h2>
+        </div>
+        <div class="card" id="redeemList"></div>
+      </div>
+
+      <div class="reveal">
+        <div class="shead" style="margin-bottom:1.4rem">
+          <span class="eyebrow">Points History · ポイント明細</span>
+          <h2 style="font-size:1.6rem">最近の動き</h2>
+        </div>
+        <div class="card">
+          <div class="vtl" id="pointsHistory"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT HISTORY -->
+<section id="apphistory" style="background:linear-gradient(180deg,#EEF0F4,#F5F6F8)">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow">Visit History · 利用・来店履歴</span>
+      <h2>施術履歴</h2>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>日時</th><th>施術</th><th>担当</th><th>状態</th></tr></thead>
+        <tbody id="apptTable"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/common.js"></script>
+<script src="assets/js/mock-data.js"></script>
+<script src="assets/js/membership.js"></script>
+</body>
+</html>
+
+

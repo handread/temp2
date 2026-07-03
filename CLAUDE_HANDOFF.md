@@ -14,6 +14,7 @@ Date: 2026-07-03
 - Added cross-links between Chinese, Japanese, and English versions.
 - Renamed the brand from `颜汐 / YANXI` to `依欣 / YIXIN` across Chinese, Japanese, and English pages.
 - Updated footer credit to `联系开发者 benihuang78@gmail.com` in the shared footers.
+- Added cache-busting query strings to shared `style.css` and `common.js` references so browsers load the new `依欣 / YIXIN` header instead of cached `颜汐 / YANXI` assets.
 
 ## Notes
 

@@ -35,6 +35,7 @@ const YX = (() => {
               🛍️<span class="badge" id="navCartBadge" style="display:none">0</span>
             </a>
             <a href="ja/index.html" class="btn btn-ghost btn-sm">日本語</a>
+            <a href="en/index.html" class="btn btn-ghost btn-sm">English</a>
             <a href="booking.html" class="btn btn-magenta btn-sm">立即预约</a>
             <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
           </div>
@@ -67,7 +68,7 @@ const YX = (() => {
           <p class="disclaimer">
             本站为「AI 医美平台」产品演示原型,用于展示预约、会员、AI 皮肤分析、智能客服、商城与数据分析六大模块的交互设计与信息架构。页面中的价格、排期、分析结果、订单与经营数据均为<b>模拟生成</b>,不连接真实医院信息系统、支付网关或第三方 AI 服务,不构成诊疗建议、疗效承诺或商业报价,仅供产品演示与内部评审使用。
           </p>
-          <p class="disclaimer" style="border-top:none;padding-top:.8rem">Developer: <b>beni</b></p>
+          <p class="disclaimer" style="border-top:none;padding-top:.8rem">Developer: <b>benihuang78@gmail.com</b></p>
         </div>
       </footer>
     `;

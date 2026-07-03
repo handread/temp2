@@ -7,8 +7,12 @@ Date: 2026-07-03
 - Added a full `ja/` site copy for the Japanese version.
 - Added Japanese shared navigation/footer in `ja/assets/js/common.js`.
 - Added translated mock data in `ja/assets/js/mock-data.js` for services, staff, products, membership tiers, skin metrics, chat quick actions, and analytics labels.
-- Added a `日本語` language switch in the Chinese navigation.
-- Added `Developer: beni` in the shared footer so it appears on the project pages.
+- Added a full `en/` site copy for the English version.
+- Added English shared navigation/footer in `en/assets/js/common.js`.
+- Added English mock data in `en/assets/js/mock-data.js`.
+- Added `日本語` and `English` language switches in the Chinese navigation.
+- Added cross-links between Chinese, Japanese, and English versions.
+- Updated developer credit to `Developer: benihuang78@gmail.com` in the shared footers.
 
 ## Notes
 
@@ -19,4 +23,6 @@ Date: 2026-07-03
 ## Suggested Follow-Up
 
 - Run a visual QA pass for `ja/index.html`, `ja/booking.html`, `ja/skin-analysis.html`, `ja/chatbot.html`, `ja/shop.html`, and `ja/analytics.html`.
+- Run a visual QA pass for `en/index.html`, `en/booking.html`, `en/skin-analysis.html`, `en/chatbot.html`, `en/shop.html`, and `en/analytics.html`.
 - If production-quality Japanese is required, have a native reviewer polish the remaining marketing copy and disclaimer text.
+- If production-quality English is required, have a native editor polish the remaining marketing copy and transactional UI text.

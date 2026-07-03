@@ -1,17 +1,16 @@
 ﻿/* ===========================================================
-   YANXI AI · Japanese shared chrome (nav / footer) + small utilities
+   YANXI AI · English shared chrome (nav / footer) + utilities
    =========================================================== */
 
 const YX = (() => {
-
   const NAV = [
-    { href:"index.html",         label:"ホーム" },
-    { href:"booking.html",       label:"予約" },
-    { href:"membership.html",    label:"会員" },
-    { href:"skin-analysis.html", label:"AI肌分析" },
-    { href:"shop.html",          label:"ショップ" },
-    { href:"analytics.html",     label:"分析" },
-    { href:"chatbot.html",       label:"AI相談" },
+    { href:"index.html", label:"Home" },
+    { href:"booking.html", label:"Booking" },
+    { href:"membership.html", label:"Membership" },
+    { href:"skin-analysis.html", label:"AI Skin" },
+    { href:"shop.html", label:"Shop" },
+    { href:"analytics.html", label:"Analytics" },
+    { href:"chatbot.html", label:"AI Assistant" },
   ];
 
   function currentPage(){
@@ -25,19 +24,19 @@ const YX = (() => {
     const cur = currentPage();
     const links = NAV.map(n => `<a href="${n.href}" class="${n.href===cur?'active':''}">${n.label}</a>`).join("");
     mount.innerHTML = `
-      <div class="demo-banner">これは <b>デモ用プロトタイプ</b> です。データ、AI結果、決済フローはすべて模擬表示で、実際の医療 / 決済システムには接続していません</div>
+      <div class="demo-banner">This is a <b>demo prototype</b>. All data, AI results, and payment flows are simulated and are not connected to real medical or payment systems.</div>
       <header class="nav">
         <div class="wrap nav-inner">
           <a href="index.html" class="brand">颜汐<span>YANXI AI BEAUTY</span></a>
           <nav class="nav-links" id="navLinks">${links}</nav>
           <div class="nav-cta">
-            <a href="shop.html#cart" class="nav-cart" id="navCart" aria-label="カート" title="カート">
+            <a href="shop.html#cart" class="nav-cart" id="navCart" aria-label="Cart" title="Cart">
               🛍️<span class="badge" id="navCartBadge" style="display:none">0</span>
             </a>
-            <a href="booking.html" class="btn btn-magenta btn-sm">予約する</a>
             <a href="../index.html" class="btn btn-ghost btn-sm">中文</a>
-            <a href="../en/index.html" class="btn btn-ghost btn-sm">English</a>
-            <button class="nav-toggle" id="navToggle" aria-label="メニュー">☰</button>
+            <a href="../ja/index.html" class="btn btn-ghost btn-sm">日本語</a>
+            <a href="booking.html" class="btn btn-magenta btn-sm">Book Now</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
           </div>
         </div>
       </header>
@@ -57,16 +56,16 @@ const YX = (() => {
           <div class="foot-top">
             <a href="index.html" class="brand" style="color:var(--ink);text-decoration:none">颜汐<span style="color:var(--magenta)">YANXI AI BEAUTY</span></a>
             <nav class="foot-links">
-              <a href="booking.html">予約</a>
-              <a href="membership.html">会員</a>
-              <a href="skin-analysis.html">AI肌分析</a>
-              <a href="shop.html">ショップ</a>
-              <a href="analytics.html">経営分析</a>
-              <a href="chatbot.html">AI相談</a>
+              <a href="booking.html">Booking</a>
+              <a href="membership.html">Membership</a>
+              <a href="skin-analysis.html">AI Skin</a>
+              <a href="shop.html">Shop</a>
+              <a href="analytics.html">Analytics</a>
+              <a href="chatbot.html">AI Assistant</a>
             </nav>
           </div>
           <p class="disclaimer">
-            本サイトは「AI美容医療プラットフォーム」の製品デモです。予約、会員、AI肌分析、AI相談、ショップ、データ分析の6機能を確認するためのプロトタイプで、価格、予約枠、分析結果、注文、経営データはすべて<b>模擬生成</b>です。実際の医療情報システム、決済ゲートウェイ、第三者AIサービスには接続しておらず、診療上の助言、効果保証、正式見積ではありません。
+            This site is a product demo for an AI beauty medical platform, showing booking, membership, AI skin analysis, AI assistant, shop, and analytics modules. Prices, schedules, analysis results, orders, and operating data are <b>simulated</b>. It is not connected to real hospital systems, payment gateways, or third-party AI services, and does not provide medical advice, efficacy claims, or commercial quotations.
           </p>
           <p class="disclaimer" style="border-top:none;padding-top:.8rem">Developer: <b>benihuang78@gmail.com</b></p>
         </div>
@@ -98,18 +97,10 @@ const YX = (() => {
     toastTimer = setTimeout(()=>el.classList.remove("show"), 2600);
   }
 
-  /* ---- cart (shared across nav badge + shop page), localStorage-backed ---- */
   const CART_KEY = "yx_cart_v1";
-  function getCart(){
-    try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }catch(e){ return []; }
-  }
-  function saveCart(cart){
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    updateCartBadge();
-  }
-  function cartCount(){
-    return getCart().reduce((s,i)=>s+i.qty,0);
-  }
+  function getCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }catch(e){ return []; } }
+  function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartBadge(); }
+  function cartCount(){ return getCart().reduce((s,i)=>s+i.qty,0); }
   function updateCartBadge(){
     const badge = document.getElementById("navCartBadge");
     if(!badge) return;
@@ -123,27 +114,12 @@ const YX = (() => {
     if(found){ found.qty += qty; } else { cart.push({ id:product.id, name:product.name, price:product.price, img:product.img, cat:product.cat, qty }); }
     saveCart(cart);
   }
-  function removeFromCart(id){
-    saveCart(getCart().filter(i=>i.id!==id));
-  }
-  function setQty(id, qty){
-    const cart = getCart();
-    const found = cart.find(i=>i.id===id);
-    if(found){ found.qty = Math.max(1, qty); }
-    saveCart(cart);
-  }
+  function removeFromCart(id){ saveCart(getCart().filter(i=>i.id!==id)); }
+  function setQty(id, qty){ const cart = getCart(); const found = cart.find(i=>i.id===id); if(found){ found.qty = Math.max(1, qty); } saveCart(cart); }
   function clearCart(){ saveCart([]); }
-
-  function fmtCNY(n){
-    return "¥" + Number(n).toLocaleString("ja-JP", { maximumFractionDigits:0 });
-  }
+  function fmtCNY(n){ return "¥" + Number(n).toLocaleString("en-US", { maximumFractionDigits:0 }); }
   function pad(n){ return String(n).padStart(2,"0"); }
-
-  function init(){
-    renderHeader();
-    renderFooter();
-    initReveal();
-  }
+  function init(){ renderHeader(); renderFooter(); initReveal(); }
 
   return { NAV, init, toast, getCart, saveCart, cartCount, addToCart, removeFromCart, setQty, clearCart, fmtCNY, pad, initReveal };
 })();
